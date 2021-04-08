@@ -1,5 +1,8 @@
 <h1>RGB Color Sensor Group 17</h1>
-Nimesh Kavshal
-Pabasara Dilshan
-Avishka
-Sithuruwan Pulsara
+<ol>
+  
+    <li>Nimesh Kavshal</li>
+<li>Pabasara Dilshan</li>
+<li>Avishka</li>
+<li>Sithuruwan Pulsara</li>
+ </ol>
