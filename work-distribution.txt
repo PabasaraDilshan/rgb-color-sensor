@@ -1,0 +1,10 @@
+Color sensing algorithm (Model finalized) --> Avishka
+
+3D printing of the parts --> Design 3D model (Nimesh solid works, All four sketch the model)
+
+ATMEGA328 programming --> (Pabasara dannawa athi, Hamoma set wemu)
+
+LCD, Keypad Algorithm --> Sithruwan
+
+PCB designing --> (Sensor part, Main chip (the one with the ATMEGA328))
+
