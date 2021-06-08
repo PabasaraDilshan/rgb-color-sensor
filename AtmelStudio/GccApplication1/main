@@ -1,0 +1,41 @@
+/*
+ * main.c
+ *
+ * Created: 4/18/2021 11:32:42 PM
+ * Author : Pabsara Dilshan
+ */ 
+
+#define F_CPU 18000000L
+#include <avr/io.h>
+#include <util/delay.h>
+//#include <keypad.h>
+//#include <lcd4bit.h>
+
+
+int main(void)
+{
+	DDRD |= 1<<DDD6;
+	
+	TCCR0A |= 1<<COM0A1|1<<WGM01|1<<WGM00;
+	TCCR0B |= 1<<CS01;
+	while(1){
+		OCR0A = 255;
+		for (int i=0;i<255;i++)
+		{
+			OCR0A-=1;
+			_delay_ms(10);
+			
+		}
+		for (int i=0;i<255;i++)
+		{
+			OCR0A+=1;
+			_delay_ms(10);
+			
+		}
+		
+		
+	
+	}
+}
+
+

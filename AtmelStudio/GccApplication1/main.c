@@ -1,40 +1,17 @@
 /*
  * main.c
  *
- * Created: 4/18/2021 11:32:42 PM
- * Author : Pabsara Dilshan
+ * Created: 6/7/2021 8:08:13 PM
+ *  Author: dilsh
  */ 
-#define F_CPU 16000000L
+#define F_CPU 8000000UL
 #include <avr/io.h>
 #include <util/delay.h>
-#include <keypad.h>
-#include <lcd4bit.h>
+#include <lcd4cpp.h>
 
-
-int main(void)
-{
-	lcd4init();
-
-	initkey();
+int main(){
 	
-	
-	
-	
-	
-    /* Replace with your application code */
-    while (1) 
-    {
-		lcd4print("Test ");
- 
-		while(1){
-			char c = waitforkey();
-			lcd4printlen(&c,1);
-			if(c=='#'){
-				break;
-			}
-		}
-		lcd4clr();
-    }
+	Lcd4bit lcd();
+	lcd.lcd4init();
+	while(1);
 }
-
-
