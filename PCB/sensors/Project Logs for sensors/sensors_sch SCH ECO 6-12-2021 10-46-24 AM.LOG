@@ -1,0 +1,7 @@
+Change Component Footprint: Designator=LEDR Old Footprint=AVAG-HLMP-4740 New Footprint=AVAG-HLMP-3301-2
+Change Component Comment: Designator=LEDR Old Comment=HLMP-4740 New Comment=HLMP-3301
+Change Component Designator: OldDesignator=RB 220R NewDesignator=RB
+Change Component Designator: OldDesignator=RG 220R NewDesignator=RG
+Change Component Designator: OldDesignator=RR 220R NewDesignator=RR
+Change Pin Designator/Name:  Old Designator=LEDR-2 Old Name=K New Designator =A New Name=1
+Change Pin Designator/Name:  Old Designator=LEDR-1 Old Name=A New Designator =K New Name=2
