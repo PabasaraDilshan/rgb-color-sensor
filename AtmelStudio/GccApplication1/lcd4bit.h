@@ -8,12 +8,12 @@
 
 
 
-#define  LCD_DDDR DDRD
-#define LCD_DPIN PIND
-#define LCD_DPRT  PORTD
-#define  LCD_CDDR DDRC
-#define  LCD_CPIN  PINC
-#define  LCD_CPRT  PORTC
+#define  LCD_DDDR DDRB
+#define LCD_DPIN PINB
+#define LCD_DPRT  PORTB
+#define  LCD_CDDR DDRD
+#define  LCD_CPIN  PIND
+#define  LCD_CPRT  PORTD
 #define  LCD_RS  2
 #define  LCD_RW  1
 #define  LCD_EN  0
@@ -99,6 +99,9 @@ void lcd4printlen(char* string, int length){
 }
 void lcd4clr(){
 	lcd4command(0x01);
+}
+void gotoNewline(){
+	lcd4command(0xC0);
 }
 
 

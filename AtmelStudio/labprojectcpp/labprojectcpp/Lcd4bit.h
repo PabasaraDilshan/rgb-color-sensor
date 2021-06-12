@@ -4,6 +4,10 @@
  * Created: 6/8/2021 3:23:46 AM
  *  Author: dilsh
  */ 
+#ifndef LCD4BIT_H_
+#define LCD4BIT_H_
+
+
 #define  LCD_DDDR DDRD
 #define LCD_DPIN PIND
 #define LCD_DPRT  PORTD
@@ -75,7 +79,7 @@ class Lcd4bit{
 		_delay_us(100);
 		_delay_ms(2);
 	}
-		void lcd4print(char* string){
+		void lcd4print(const char* string){
 		unsigned int i = 0;
 		while(string[i]!=0){
 			
@@ -101,3 +105,11 @@ class Lcd4bit{
 	
 	
 };
+
+
+
+
+
+
+
+#endif

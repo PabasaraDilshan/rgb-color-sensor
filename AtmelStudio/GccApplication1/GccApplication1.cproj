@@ -131,13 +131,13 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="adc.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="keypad.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="lcd4bit.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="lcd4cpp.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="lcd8bit.h">
@@ -147,6 +147,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pwm.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="tools.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
