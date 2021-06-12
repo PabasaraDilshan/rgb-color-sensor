@@ -18,11 +18,17 @@
 int main(){
 	lcd4init();
 	initkey();
-	initPwm(6);
-	initPwm(5);
-	initPwm(3);
+	//initPwm(6);
+	//initPwm(5);
+	//initPwm(3);
 	lcd4print("Press 1 ADC");
 	gotoNewline();
+	while(1){
+		char c = waitforkey();
+		char cr[1];
+		cr[0] = c;
+		lcd4printlen(cr,1);
+	}
 	lcd4print("Press 2 RGB");
 	char c = waitforkey();
 	//char c ='1';

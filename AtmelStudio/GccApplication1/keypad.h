@@ -6,9 +6,9 @@
  */ 
 
 
-#define KEY_DDR  DDRC
-#define KEY_PIN  PINC
-#define KEY_PRT  PORTC
+#define KEY_DDR  DDRB
+#define KEY_PIN  PINB
+#define KEY_PRT  PORTB
 int col,row;
 unsigned char keys[4][3] = {'1','2','3','4','5','6','7','8','9','*','0','#'};
 void initkey(){

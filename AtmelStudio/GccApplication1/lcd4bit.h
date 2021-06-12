@@ -8,15 +8,15 @@
 
 
 
-#define  LCD_DDDR DDRB
-#define LCD_DPIN PINB
-#define LCD_DPRT  PORTB
+#define  LCD_DDDR DDRC
+#define LCD_DPIN PINC
+#define LCD_DPRT  PORTC
 #define  LCD_CDDR DDRD
 #define  LCD_CPIN  PIND
 #define  LCD_CPRT  PORTD
-#define  LCD_RS  2
+#define  LCD_RS  0
 #define  LCD_RW  1
-#define  LCD_EN  0
+#define  LCD_EN  2
 void lcd4init();
 void lcd4command(int data);
 void lcd4data(int data);
@@ -28,7 +28,8 @@ void lcd4clr();
 
 void lcd4init(){
 	
-	LCD_DDDR |= 0xF0; //PORTD as Output
+	//LCD_DDDR |= 0xF0; //PORTD as Output
+	LCD_DDDR |= 0x1E;
 	LCD_CDDR |= 0x07; //PORTC as Output
 	
 	
@@ -45,14 +46,14 @@ void lcd4init(){
 	
 }
 void lcd4command(int data){
-	LCD_DPRT = (LCD_DPRT &0x0F)| (data & 0xF0);
+	LCD_DPRT = (LCD_DPRT & ~(0x1E))| ((data & 0xF0)>>3);
 	LCD_CPRT &= ~(1<<LCD_RS); //RS=0
 	LCD_CPRT &= ~(1<<LCD_RW); //RW = 0
 	LCD_CPRT |= (1<<LCD_EN); //EN = 1
 	_delay_us(1);
 	LCD_CPRT &= ~(1<<LCD_EN);
 	_delay_us(100);
-	LCD_DPRT =  (LCD_DPRT &0x0F)|(data<<4);
+	LCD_DPRT =  (LCD_DPRT &~(0x1E))|((data<<1)&0x1E);
 
 	LCD_CPRT |= (1<<LCD_EN); //EN = 1
 	_delay_us(1);
@@ -64,7 +65,7 @@ void lcd4command(int data){
 }
 
 void lcd4data(int data){
-	LCD_DPRT =  (LCD_DPRT &0x0F)| (data & 0xF0);
+	LCD_DPRT =  (LCD_DPRT &~(0x1E))| ((data & 0xF0)>>3);
 	LCD_CPRT |= (1<<LCD_RS); //RS=1
 	LCD_CPRT &= ~(1<<LCD_RW); //RW=0
 	LCD_CPRT |= (1<<LCD_EN); //EN = 1
@@ -72,7 +73,7 @@ void lcd4data(int data){
 	LCD_CPRT &= ~(1<<LCD_EN); //EN=0
 	_delay_us(100);
 	
-	LCD_DPRT = (LCD_DPRT &0x0F)|(data<<4);
+	LCD_DPRT =  (LCD_DPRT &~(0x1E))|((data<<1)&0x1E);
 	LCD_CPRT |= (1<<LCD_EN); //EN = 1
 	_delay_us(1);
 	LCD_CPRT &= ~(1<<LCD_EN); //EN=0
