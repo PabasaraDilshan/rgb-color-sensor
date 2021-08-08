@@ -29,31 +29,33 @@ void lcd4clr();
 void lcd4init(){
 	
 	//LCD_DDDR |= 0xF0; //PORTD as Output
-	LCD_DDDR |= 0x1E;
+	LCD_DDDR |= 0x0F;
 	LCD_CDDR |= 0x07; //PORTC as Output
 	
 	
 	LCD_CPRT &= ~(1<<LCD_EN);//EN =0
 	_delay_ms(2);
 	lcd4command(0x33);//init lcd with 4bit
+
 	lcd4command(0x32);//init lcd with 4bit
 	lcd4command(0x28);//init lcd with 4bit
 	lcd4command(0x0E);//display on, cursor on
-	lcd4command(0x01);//clear display
+	
 	
 	
 	lcd4command(0x06);//shift cursor to right
+	lcd4command(0x01);//clear display
 	
 }
 void lcd4command(int data){
-	LCD_DPRT = (LCD_DPRT & ~(0x1E))| ((data & 0xF0)>>3);
+	LCD_DPRT = (LCD_DPRT & ~(0x0F))| ((data & 0xF0)>>4);
 	LCD_CPRT &= ~(1<<LCD_RS); //RS=0
 	LCD_CPRT &= ~(1<<LCD_RW); //RW = 0
 	LCD_CPRT |= (1<<LCD_EN); //EN = 1
 	_delay_us(1);
 	LCD_CPRT &= ~(1<<LCD_EN);
 	_delay_us(100);
-	LCD_DPRT =  (LCD_DPRT &~(0x1E))|((data<<1)&0x1E);
+	LCD_DPRT =  (LCD_DPRT &~(0x0F))|((data)&0x0F);
 
 	LCD_CPRT |= (1<<LCD_EN); //EN = 1
 	_delay_us(1);
@@ -65,7 +67,7 @@ void lcd4command(int data){
 }
 
 void lcd4data(int data){
-	LCD_DPRT =  (LCD_DPRT &~(0x1E))| ((data & 0xF0)>>3);
+	LCD_DPRT =  (LCD_DPRT &~(0x0F))| ((data & 0xF0)>>4);
 	LCD_CPRT |= (1<<LCD_RS); //RS=1
 	LCD_CPRT &= ~(1<<LCD_RW); //RW=0
 	LCD_CPRT |= (1<<LCD_EN); //EN = 1
@@ -73,7 +75,7 @@ void lcd4data(int data){
 	LCD_CPRT &= ~(1<<LCD_EN); //EN=0
 	_delay_us(100);
 	
-	LCD_DPRT =  (LCD_DPRT &~(0x1E))|((data<<1)&0x1E);
+	LCD_DPRT =  (LCD_DPRT &~(0x0F))|((data)&0x0F);
 	LCD_CPRT |= (1<<LCD_EN); //EN = 1
 	_delay_us(1);
 	LCD_CPRT &= ~(1<<LCD_EN); //EN=0
@@ -104,6 +106,8 @@ void lcd4clr(){
 void gotoNewline(){
 	lcd4command(0xC0);
 }
-
+void moveleft(){
+	lcd4command(0x10);
+}
 
  /* LCD_H_ */
